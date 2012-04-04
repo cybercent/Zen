@@ -1,0 +1,213 @@
+// Place all the styles related to the site controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "preboot";
+
+html, body {
+ background: #E7EAED;
+ font-family: Helvetica,Arial,sans-serif;
+}
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+#logo {
+  display: block;
+  float: left;
+}
+#header {
+  height: 46px;
+  display: block;
+  @include gradient-vertical(#34548f,#2c4676);
+  border: 1px solid #2e3c5b;
+  border-left-width: 0;
+  border-right-width: 0;
+  $shadow: 0 1px 1px #426bab inset, 0 -1px 1px #365590 inset;
+  @include box-shadow($shadow)
+}
+#nav {
+  font-family: Helvetica,Arial,sans-serif;
+  float: right;
+  margin-top: 15px;
+  li {
+	float: left;
+	margin-right: 20px;
+	a {
+	  text-decoration: none;
+	  color: #FFFFFF;
+	  text-shadow: 0 1px 0 #172338;
+	  font-size: 14px;
+	}
+  }
+}
+
+h1 {
+  font-size: 2em;
+  margin: 21px 0;
+  position: relative;
+}
+
+#logo {
+  margin: 10px 0;
+  font-size: 27px;
+  a {
+    margin: 0;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #111111;
+  }
+}
+
+#sign_up, #sign_in {
+  .inner {
+    background-color: #FFFFFF;	
+  }
+  form {
+	input {
+	  width: 339px;
+	}
+    input.button {
+       width: auto;
+    }
+  }
+}
+
+#sign_in, #forgot_password, #change_password {
+  width: 352px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid #C0C4D2;
+  @include border-radius(5px);
+  $shadow: 0 3px 10px rgba(0, 0, 0, 0.08) inset;
+  @include box-shadow($shadow);
+  ul li {
+	a {
+	  font-size: 13px;
+	  display: inline-block;
+	  margin-left: 20px;
+	  color: #34548F;
+	}
+  }
+}
+
+.site {
+  .intro {
+    background: url('<%= asset_path('mac.png') %>') right 21px no-repeat;
+    .pitch {
+      display: block; 
+      width: 400px;
+      float: left;
+      color: #444444;
+    }
+    .image {
+	  display: block;
+	  height: 350px;
+	  width: 510px;
+	  float: right;
+    }
+    .register {
+	  clear: both;
+	  display: block;
+	  width: 928px;
+	  padding: 15px;
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid #C0C4D2;
+      @include border-radius(5px);
+      $shadow: 0 3px 10px rgba(0, 0, 0, 0.08) inset;
+	  @include box-shadow($shadow);
+	  font-size: 20px;
+	  color: #444444;
+	  text-align: center;
+  	  text-shadow: 0 1px 0 #FFFFFF;
+     .button {
+	   color: #FFFFFF;
+	   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+	   @include gradient-vertical(#FFAA6E,#DA5700);
+	   border: 1px solid #A54D10;
+	   $shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 1px rgba(0, 0, 0, 0.1);
+	   @include box-shadow($shadow);
+	   margin-left: 40px;
+     }
+	}
+	.final {
+	  margin-top: 20px;
+	  color: #444444;
+	  text-align: center;
+  	  text-shadow: 0 1px 0 #FFFFFF;
+	}
+  }
+  .main-content {
+    width: 373px;
+    margin-right: 0;
+    margin-left: 80px;
+  }
+  .pricing {
+	padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid #C0C4D2;
+    @include border-radius(0 5px 5px 0);
+    $shadow: 0 3px 10px rgba(0, 0, 0, 0.08) inset;
+	@include box-shadow($shadow);
+	border-left-width: 0;
+	float: left;
+	width: 390px;
+	margin-top: 50px;
+	h3 {
+	  text-align: center;
+	  font-size: 27px;
+	  color: #444444;
+	  text-shadow: 0 1px 0 #FFFFFF;
+	}
+	.free, .paid {
+	  margin: 20px 0 40px 0;
+	  color: #DA5700;
+	  width: 49%;
+	  float: left;
+	  display: block;
+	  text-align: center;
+	  text-shadow: 0 1px 0 #FFFFFF;
+	  .description {
+		font-size: 12px;
+	  }
+	  .price {
+		font-size: 32px;
+		padding: 15px 0;
+		small {
+		  font-size: 20px;
+		  vertical-align: top;
+		}
+	  }
+	  .period {
+		font-size: 14px;
+	  }
+	}
+	.free {
+	  border-right: 1px solid #FFFFFF;
+	}
+	.paid {
+	  border-left: 1px solid #C0C4D2;	
+	}
+	p {
+	  clear: both;
+	  font-size: 12px;
+	  color: #444444;
+	  text-shadow: 0 1px 0 #FFFFFF;
+	  text-align: center;
+	}
+  }
+}
+.alert {
+  background-color: #D9EDF7;
+  color: #3A87AD;
+  border: 1px solid #BCE8F1;
+  @include border-radius(5px);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  padding: 8px 14px;
+  display: block;
+  margin: 10px auto;
+  width: 600px;
+}

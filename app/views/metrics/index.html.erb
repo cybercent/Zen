@@ -1,0 +1,67 @@
+<h1>Metrics</h1>
+<div id="sidebar">
+	<div class="wrapper">
+		<div class="inner">
+			<dl class="metrics">
+				<dt>Active Deal Value</dt>
+				<dd><%= formatted_exact_value(current_user.active_projects_value) %></dd>
+				<dt>Average Deal Value</dt>
+				<dd><%= formatted_exact_value(current_user.active_projects_average_value) %></dd>
+				<dt>Active Deals</dt>
+				<dd><%= current_user.active_projects_count %></dd>
+				<dt>Deals All-time</dt>
+				<dd><%= current_user.all_time_projects_count %></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+<div id="metrics">
+	<div class="metric">
+	  <h3>Won & Lost</h3>
+	  <div id="won_lost"></div>
+	</div>
+	<div class="metric">
+	  <h3>Value in Each Step</h3>
+	  <div id="value_per_status"></div>
+	</div>
+	<div class="metric">
+	  <h3>Time Spent Per Step</h3>
+	  <div id="time_per_status"></div>
+	</div>
+</div>
+
+<script>
+window.onload = function () {
+   
+  function empty_circle(holder) {
+	var paper = Raphael(holder, 182, 300);
+	paper.circle(91, 91, 90).attr({fill:"#ffffff","fill-opacity":"0.4",stroke:"#C0C4D2","stroke-width":"2","stroke-dasharray":"- "});
+	paper.text(91,91,"Not enough data").attr("fill","#d59929");
+  }
+
+  function metrics_circle(holder, data, legend) {
+	var paper = Raphael(holder, 190, 300);
+	var w = $("#"+holder).width()/2;
+	paper.piechart(w, w, 90, data, {legend: legend, legendpos: "south", legendcolor: "#69717E", strokewidth: 0, colors: ['#8BC79D','#FDA9C7','#FDDB6F','#F76966']});
+  }
+
+  function metrics(holder, data, legend) {	
+	if((data.length==0) || (eval(data.join('+')) == 0)) {
+	  empty_circle(holder);
+	} else {
+	  data.forEach(function(item,i) { if (item == 0) data[i] = 0.0001; });
+	  metrics_circle(holder, data, legend);
+	}
+  }
+
+
+  metrics("won_lost", [<%= @won %>,<%= @lost %>], ["<%= @won %> - Won", "<%= @lost %> - Lost"]);
+  
+  metrics("value_per_status", [<%= value_per_state_value_list(@value_per_state) %>],[<%= value_per_state_legend_list(@value_per_state) %>]);
+  
+  metrics("time_per_status", [<%= time_per_state_value_list(@time_per_state) %>], [<%= time_per_state_legend_list(@time_per_state) %>]);
+  
+  
+}
+</script>

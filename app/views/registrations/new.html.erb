@@ -1,0 +1,44 @@
+<h1><%= t(:sign_up, :scope => "views.layout.site") %></h1>
+<div class="main-content">
+  <div id="sign_up">
+  	<div class="header">&nbsp;</div>
+  	<div class="inner">
+  	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  	  <%= devise_error_messages! %>
+  	  <ul>
+  	    <li>
+  	      <%= f.label :name %>
+  	      <%= f.text_field :name %>
+  	    </li>
+  	    <li>
+  	      <%= f.label :email %>
+  	      <%= f.email_field :email %>
+  	    </li>
+  	    <li>
+  	      <%= f.label :password %>
+  	      <%= f.password_field :password %>
+  	    </li>
+  	    <li>
+  	      <%= f.label :invite_code %>
+  	      <%= f.text_field :invite_code %>
+  	    </li>
+  	    <li><%= f.submit "Sign up", :class => "button" %></li>
+  	  </ul>
+  	<% end %>
+  	</div>
+  </div>
+</div>
+<div class="pricing">
+  <h3>Pricing</h3>
+  <div class="free">
+  	<div class="description">25 Total Deals</div>
+	<div class="price">Free</div>
+	<div class="period">Forever</div>
+  </div>
+  <div class="paid">
+  	<div class="description">Unlimited Deals</div>
+	<div class="price"><small>&euro;</small>7</div>
+	<div class="period">Per month</div>
+  </div>
+  <p>No contracts, credit cards or commitments. Just the goods.</p>
+</div>

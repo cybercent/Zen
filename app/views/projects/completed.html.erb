@@ -1,0 +1,28 @@
+<h1>Completed Projects</h1>
+<div class="main-content">
+	<div class="header">
+	 &nbsp;
+	</div>
+	<div class="inner">
+		<ul class="completed-projects">
+			<% @projects.each do |project| %>
+				<li>
+				  <h3><%= link_to project.name, project_path(project) %></h3>
+				  <p><%= project.client %> &mdash; <%= project.value %></p>
+				</li>
+			<% end %>
+			<% if @projects.empty? %>
+			<li class="empty">It looks like you don’t have any completed deals.</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div id="sidebar">
+	<div class="wrapper">
+		<div class="nav">
+		  <ul>
+			<li><%= link_to raw("&#9666; Back to Active Projects"),projects_path %></li>
+		  </ul>
+		</div>
+	</div>
+</div>

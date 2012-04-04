@@ -1,0 +1,12 @@
+defaults: &defaults
+  free_projects: 25
+  estimate_tag: &#9733;
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

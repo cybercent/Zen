@@ -1,0 +1,19 @@
+Use this README file to introduce your application and point to useful places in the API for learning more.
+Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+
+Feedback
+-------------------------------
+
+Chase Hagerman
+I'm no pro developer so my opinions should be taken with a grain of salt.
+
+WHY MULTI-USERS:
+I suggest this account ownership feature because for most companies and projects there is only one sales person dealing with said deal. It would be much easier if each employee had their own Stride account and shared their metrics with other sales people, but for the sake of integrating companywide metrics I would put multiple account users in a shared master account. This could enable an administrator to view multiple employee’s progress and metrics in one combined metrics page or view each employee’s separate metrics.
+
+HOW TO IMPLIMENT:
+Let’s take a look at how salesforce deals with multi-users. Each master account is granted admin capabilities; the admin then creates it’s users and dispatches them to set email addresses where those employees set a password and then can get to work. For all users, in the account details there is an entry for 'Account Owner'; clicking this loads up a new page where you can either type in another salesforce-using colleague or select from a list of recently viewed users. It's a cumbersome process and that approach would be the complete opposite of what I know Stride was built for - ease of use and a stripped-down UI.
+
+I'm not sure what the average company’s salesforce user base is at any given company but given the complexity of the SaaS I’m sure it’s in the multiple dozens. SF’s complexity is great when managing hundreds of salespeople, but it leaves much to be desired for SMBs like mine.
+
+If I were you I would put the account owner info in line with the 'put on hold', 'mark deal lost', 'edit', and 'delete' icons. I would also use a drop down menu selector as the method to change said account owner. Again, if this is integrated correctly, an administrator will be able to view metrics from each sub-account separately or view all metrics as a company.

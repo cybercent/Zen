@@ -1,0 +1,40 @@
+<li class="project <%= 'hold' if project.hold? %>" id="project_<%= project.id %>" data-id="<%= project.id %>" data-name="<%= project.name %>" 
+	data-client="<%= project.client %>" <%= raw "data-exact-value=\"#{project.exact_value}\"" if project.exact_value %>
+	<%= raw "data-estimate-value=\"#{project.estimate_value}\"" if project.estimate_value %>>
+	<h2>
+		<%= link_to project.name, project_path(project), :class => 'project-name' %>
+		<span class="project-client"><%= project.client %></span>
+		<span class="deal-value"><%= formatted_value(project) %></span>
+	</h2>
+	<%= project_states(project) %>
+	<div class="actions">
+		<a href="#" rel="tooltip" class="hold" data-state="hold" title="Put on hold"><span>Pause</span></a>
+		<a href="#" rel="tooltip" class="lost" data-state="lost" title="Mark deal as lost"><span>Lost</span></a>
+		<a href="#" rel="tooltip" class="edit" title="Edit"><span>Edit</span></a>
+		<a href="#" rel="tooltip" class="delete" title="Delete"><span>Delete</span></a>
+	</div>
+	<% if defined?(transition) && !project.hold? %>
+	<div class="note">
+		<%= form_for [project,transition] do |f| %>
+			<%= f.text_area :comment, :placeholder => "Add a note for this change (optional)" %>
+			<button type="submit" class="button">Add Note</button>
+		    <a href="#" class="cancel">Cancel</a>
+		<% end %>
+	</div>
+	<% end %>
+	<% if project.hold? %>
+	<div class="overlay">
+		<div>
+			<%= link_to "Reactivate this deal", "#", :class => "unhold", :"data-state" => "closing" %><br/>
+			<%= link_to "View History", project_path(project), :class => "history" %>
+		</div>
+	</div>
+	<% end %>
+</li>
+<% if defined? projects_stats %>
+<div class="info">
+  <span class="active-deals"><%= current_user.active_projects_count %></span>
+  <span class="deals-value"><%= formatted_exact_value(current_user.active_projects_value) %></span>
+  <span class="free-deals"><%= current_user.free_projects %></span>
+</div>
+<% end %>

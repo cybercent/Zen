@@ -1,0 +1,579 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "preboot";
+
+.main-content {
+  text-shadow:0 1px 0 #fff;
+  width: 710px;
+  margin: 0 5px 0 5px;
+  float: left;
+  .header {
+	@include gradient-vertical(#34548f,#2c4676);
+	$shadow: 0 1px 1px #426bab inset, 0 -1px 1px #365590 inset;
+	@include box-shadow($shadow);
+    padding: 5px;
+	overflow: hidden;
+	border: 1px solid #2E3C5B;
+	@include border-radius(5px 5px 0 0);
+    form {
+	  float: right;
+	  margin: 2px;
+	  input {
+		padding: 2px 2px 2px 28px;
+		border: 1px solid #2E3C5B;
+		@include border-radius(2px);
+		font-size: 0.75em;
+		height: 18px;
+		width: 150px;
+		font-weight: 400;
+		background: #F3F4F7;
+		/*background: #FFF url('<%= asset_path('search_bg.png') %>') 0px -4px no-repeat;*/
+		$shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+		@include box-shadow($shadow);
+		color: #676458;
+		text-shadow: 0 1px 0 #fff;
+		margin: 0;
+	  }
+    }
+    .button {
+	  background: #35538D;
+	  @include gradient-vertical(#3A5B97,#2E487E);
+	  padding: 4px 12px;
+	  color: #FFFFFF;
+	  border-color: #243150;
+	  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	  display: inline-block;
+	  line-height: 19px;
+	  $shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) inset, 0 1px rgba(0, 0, 0, 0.1);
+	  @include box-shadow($shadow);
+	  cursor: pointer;
+	  &:hover {
+		background: #395A9B;
+	    @include gradient-vertical(#3E62A4,#314D8D);
+	  }
+	}
+  }
+  .project {
+	height: 61px;
+	margin: 4px;
+	border: 1px solid #C3CECE;
+	position: relative;
+	@include border-radius(5px);
+	@include background-clip(border-box);
+	/*@include box-shadow($shadow);
+	$shadow: 0 3px 10px rgba(0, 0, 0, 0.08) inset;*/
+	@include gradient-vertical(#FFFFFF,#F0F0F0);
+	h2 {
+	  cursor: move;
+	  font-size: 1.2em;
+	  height: 35px;
+	  line-height: 38px;
+	  margin: 0;
+	  padding: 0 10px;
+	  color: #3A495D;
+	  text-shadow:0 1px 0 #fff;
+	}
+	.overlay {
+	  background: rgba(71, 80, 93, 0.8);
+	  border: 1px solid #47505D;
+	  @include border-radius(5px);
+	  $shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+	  @include box-shadow($shadow);
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  opacity: 1;
+	  visibility: hidden;
+	  left: 0;
+	  bottom: 0;
+	  z-index: 100;
+	  div {
+	    text-align: center;
+	    display: none;
+	    color: #FFFFFF;
+		text-shadow: 0 -1px 0 #000000;
+		a {
+		  font-family: Helvetica,Arial,sans-serif;
+		  color: #E4E4DE;
+		  text-decoration: none;
+		  font-size: 0.8em;
+		  line-height: 13px;
+		  &.unhold {
+			font-size: 1em;
+			line-height: 35px;
+		  }
+		  &:hover {
+		    color: #D59929;	
+		  }
+		}
+	  }
+	}
+	&.hold {
+	  h2 { 
+		@include opacity(50);
+	  }
+	  .states, .actions {
+		@include opacity(30);
+	  }
+	}
+	&:hover {
+	  .overlay {
+	    visibility: visible;
+	    div {
+		  display: block;
+		}	
+	  }
+	}
+	.note {
+	  margin-top: -5px;
+	  padding-top: 13px;
+	  position: absolute;
+	  top: 60px;
+	  width: 250px;
+	  background: url('<%= asset_path('dropdown.png') %>') -15px 5px no-repeat;;
+	  z-index: 20;
+	  form {
+		margin: 5px;
+		padding: 10px;
+		textarea {
+		  $shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+		  @include box-shadow($shadow);
+		  @include border-radius(3px);
+		  height: 6em;
+		  width: 215px;
+		  font-size: 0.9em;
+		}
+	  }
+	}
+	button {
+	  @include gradient-vertical(#FFFFFF,#F4F4F4);
+	  border: 1px solid #BDBDCE;
+	  color: #69717E;
+	  $shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+	  @include box-shadow($shadow);
+	  &hover {
+		 @include gradient-vertical(#FFFFFF,#FAFAFA);
+	  }
+	}
+	.cancel {
+	  font-family: Helvetica,Arial,sans-serif;
+	  text-decoration: none;
+      color: #FFFFFF;
+      font-size: 0.85em;
+      margin-left: 5px;
+	  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+      &:hover {
+	    color: #FFFFFF;
+      }
+	}
+  }
+  .inner {
+    background: #F3F4F7;
+    border: 1px solid #C0C4D2;
+    @include border-radius(0 0 5px 5px);
+    $shadow: 0 1px 0.5px rgba(0, 0, 0, 0.07);
+    @include box-shadow($shadow);
+    margin-bottom: 10px;
+	li{
+	  &.empty {
+	    font-size: 1.2em;
+	    padding: 40px 0;
+	    text-align: center;
+	    color: #C0C4D2;
+	    a {
+	  	  color: #C0C4D2;
+	 	  border-bottom: 1px solid #C0C4D2;
+	  	  &:hover {
+	  	    color: #C0C4D2;
+	  	  }
+	    }
+	  }
+	}
+  }
+}
+
+#sidebar {
+  text-shadow:0 1px 0 #fff;
+  .wrapper {
+	margin-bottom: 20px;
+  }
+  .inner {
+	padding: 15px;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid #C0C4D2;
+    @include border-radius(5px);
+    $shadow: 0 3px 10px rgba(0, 0, 0, 0.08) inset;
+	@include box-shadow($shadow);
+  }
+  .nav {
+	padding: 0;
+	background: rgba(255, 255, 255, 0.35);
+    border: 1px solid #C0C4D2;
+    @include border-radius(5px);
+    $shadow: 0 3px 10px rgba(0, 0, 0, 0.08) inset;
+	@include box-shadow($shadow);
+	ul li {
+	  border-top: 1px solid #FFFFFF;
+	  border-bottom: 1px solid #C0C4D2;
+	  &:first-child {
+	    border-top-width: 0;	
+	  }
+	  &:last-child {
+		border-bottom-width: 0;
+	  }
+	  a {
+	    display: block;
+	    padding: 10px 15px;
+	    color: #69717E;
+	    text-decoration: none;
+	    font-size: 0.9em;
+	    &:hover {
+	      $shadow: 0 0 15px rgba(0,0,0,0.05) inset;
+	      @include box-shadow($shadow);
+	      color: #2C4676;
+	    }
+	  }
+	}
+  }
+}
+
+h1, h2 {
+  .project-name {
+    text-decoration: none;
+    color: #3A495D;
+    text-shadow: 0 1px 1px #FFFFFF;
+    &:hover {
+      color: #3A495D;	
+    }	
+  }
+  
+  .project-client {
+    font-size: 0.7em;
+    text-shadow: 0 1px 1px #FFFFFF;
+  }
+  
+  .deal-value {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    font-size: 0.85em;
+    padding-right: 10px;
+    width: 105px;
+    border-left: 1px solid #C3CECE;
+    background-color: rgba(213, 153, 41, 0.08);
+    color: #d59929;
+    text-shadow: 0 1px 0 #FFFFFF;
+  }
+}
+h1 {
+  text-shadow:0 1px 0 #fff;
+  color: #444444;
+  .project-client {
+	font-size: 0.6em;
+  }
+  .deal-value {
+	font-size: 1em;
+	border-width: 0;
+	background-color: transparent;
+  }
+}
+
+.states {
+  border-top: 1px solid #C3CECE;
+  float: left;
+  overflow: hidden;
+  @include border-radius(0 0 0 5px);
+  li {
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 0.75em;
+	font-weight: bold;
+	color: #69717E;
+	text-shadow: 0 1px 0 #FFFFFF;
+	cursor: pointer;
+	float: left;
+	width: 110px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	padding: 0 10px;
+	margin-left: -10px;
+	background: url('<%= asset_path('steps.png') %>') right -78px no-repeat;
+	@include background-clip(border-box);
+	position: relative;
+	&.pos-1 {
+	  z-index: 10;
+	  margin-left: 0;
+	  padding-left: 0;
+	}
+	&.pos-2 {
+	  z-index: 9;
+	}
+	&.pos-3 {
+	  z-index: 8;
+	}
+	&.pos-4 {
+	  z-index: 7;
+	}
+	&.pos-5 {
+	  z-index: 6;
+	  background-position: -10px -78px;
+	  padding-right: 0;
+	}
+	&.past {
+	  background: url('<%= asset_path('steps.png') %>') right -52px no-repeat;
+	  color: #D59929;
+	  text-shadow: 0 1px 1px #FFFFFF;
+	}
+	&.current {
+	  background: url('<%= asset_path('steps.png') %>') right 0px no-repeat;
+	  color: #FFFFFF;
+	  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1)
+	}
+	&:hover {
+	  background: url('<%= asset_path('steps.png') %>') right -26px no-repeat;
+	  color: #FFFFFF;
+	  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+	}
+  }
+}
+
+.actions {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  float: right;
+  border-top: 1px solid #C3CECE;
+  @include border-radius(0 0 5px 0);
+  overflow: hidden;
+  height: 25px;
+  width: 116px;
+  a {
+    border-left: 1px solid #C3CECE;
+	@include gradient-vertical(#FFFFFF,#F0F0F0);
+	width: 28px;
+	height: 25px;
+	display: block;
+	float: left;
+	text-indent: -9999em;
+	span {
+	  background: url('<%= asset_path('actions.png') %>') no-repeat;
+	  display: block;
+	  height: 25px;
+    }
+	&:hover {
+	  @include gradient-vertical(#F0F0F0,#FFFFFF);
+	}
+  }
+  .hold span {
+    background-position: 6px 3px;	
+  }
+  .lost span {
+	background-position: 6px -24px;
+  }
+  .edit span {
+	background-position: 6px -49px;
+  }
+  .delete span {
+	background-position: 6px -75px;
+  }
+}
+
+.footer {
+  padding: 0 5px;
+}
+
+#sidebar {
+  width: 230px;
+  margin: 0 5px 0 5px;
+  float: left;
+  .metrics {
+	margin-bottom: 20px;
+	dt {
+	  color: #69717E;
+	  font-weight: bold;
+	}
+	dd {
+	  color: #d59929;
+	  font-size: 2em;
+	  font-weight: bold;
+	  margin-bottom: 15px;
+	}
+  }
+  .subscription {
+	p {
+	  margin-bottom: 20px;
+	  color: #69717E;
+	  font-size: 0.85em;
+	  strong {
+	    font-weight: bold;	
+	  }
+	}
+  }
+  .buttons {
+  	text-align: center;
+  	margin-bottom: 10px;	
+  }
+}
+
+.button-container {
+  @include gradient-vertical(rgba(0, 0, 0, 0.07),transparent);
+  @include border-radius(5px);
+  padding: 2px 3px 2px 3px;
+  border-top: 1px solid #CACAD4;
+  display: inline-block;
+}
+
+.button, button {
+  border: 1px solid #BDBDCE;
+  color: #69717E;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 12px 20px;
+  display: inline-block;
+  $shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  @include box-shadow($shadow);
+  @include border-radius(5px);
+  @include gradient-vertical(#FFFFFF,#F4F4F4);
+  &hover {
+	 @include gradient-vertical(#FFFFFF,#FAFAFA);
+  }
+}
+
+
+#error_explanation {
+  color: #FF0000;
+  margin: 10px 0;
+  font-size: 13px;
+  font-weight: normal;
+  h2 {
+	display: none;
+  }
+}
+
+// Forms
+form input, form textarea {
+  font-family: Helvetica,Arial,sans-serif;
+  background: #FFFFF8;
+  border: 1px solid #C0C4D2;
+  $shadow: 0 1px 0 #FFFFFF;
+  @include box-shadow($shadow);
+  @include border-radius(3px);
+  margin-bottom: 15px;
+  color: #676458;
+  font-size: 1.3em;
+  padding: 5px;
+  &:focus {
+	border-color: #69717E;
+	$shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+	@include box-shadow($shadow);
+  }
+}
+
+form .field_with_errors input, form .field_with_errors textarea {
+  border: 1px solid #FF0000;
+  &:focus {
+	border-color: #69717E;
+  }
+}
+
+form label {
+  display: block;
+  color: #69717E;
+  text-shadow: 0 1px 0 #FFFFFF;
+  font-size: 1.1em;
+  margin-bottom: 2px;
+  padding-left: 2px;
+}
+.modal form .value {
+  input {
+    width: 130px;	
+  }
+  textarea {
+	height: 140px;
+	width: 97%;
+	max-width: 100%;
+  }
+  span {
+  	color: #69717E;
+    margin: 0 8px;
+  }
+  div {
+	display: inline-block;
+	a {
+	  text-decoration: none;
+	  color: #69717E;
+	  font-size: 1.2em;
+	  &:hover, &.hover {
+		color: #d59929;
+	  }
+	}
+  }
+  .estimated_1 .estimate_1,
+  .estimated_2 .estimate_1, .estimated_2 .estimate_2,
+  .estimated_3 .estimate_1, .estimated_3 .estimate_2, .estimated_3 .estimate_3,
+  .estimated_4 .estimate_1, .estimated_4 .estimate_2, .estimated_4 .estimate_3, .estimated_4 .estimate_4,
+  .estimated_5 .estimate_1, .estimated_5 .estimate_2, .estimated_5 .estimate_3, .estimated_5 .estimate_4, .estimated_5 .estimate_5 {
+    color: #d59929;
+  }
+}
+
+.completed-projects li, .history li {
+  padding: 10px;
+  border-bottom: 1px solid #C0C4D2;
+  $shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  @include box-shadow($shadow);
+  &:last-child {
+	border-bottom-width: 0;
+	$shadow: none;
+	@include box-shadow($shadow);
+  }
+  h3 {
+	font-size: 1.2em;
+	line-height: 1.3em;
+	a {
+	  text-decoration: none;
+	  color: #3A495D;
+	  text-shadow: 0 1px 1px #FFFFFF;
+	  &:hover {
+	    color: #2C4676;	
+	  }
+	}
+  }
+  p {
+   color: #444444;
+   text-shadow: 0 1px 1px #FFFFFF;	
+   font-size: 0.85em;
+   font-family: Helvetica,Arial,sans-serif;
+   line-height: 1.25em;
+  }
+}
+
+.history {
+  .transition {
+	font-family: Helvetica,Arial,sans-serif;
+    font-size: 0.8em;
+    height: 16px;
+    line-height: 16px;
+	background-color: #D59929;
+	color: #FFFFFF;
+	display: block;
+	padding: 1px 8px;
+	margin-right: 5px;
+	@include border-radius(40px);
+	$shadow: 0 3px 3px rgba(0, 0, 0, 0.3) inset;
+	@include box-shadow($shadow);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	float: left;
+  }
+  .time {
+	font-family: Helvetica,Arial,sans-serif;
+    font-size: 0.75em;
+    color: #999999;
+    text-shadow: 0 1px 0 #FFFFFF;
+    text-align: right;
+    line-height: 16px;
+  }
+}

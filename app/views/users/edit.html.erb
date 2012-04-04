@@ -1,0 +1,22 @@
+<h1>My Account</h1>
+<div class="main-content">
+  <div class="header">&nbsp;</div>
+  <div class="inner">
+    <%= form_for @user do |f| %>
+	<%= error_messages! %>
+	<ul>
+	   <li>
+		 <%= f.label :name %>
+		 <%= f.text_field :name, :required => true %>
+	   </li>
+       <li>
+		 <%= f.label :email %>
+	     <%= f.text_field :email, :required => true %>
+	   </li>
+       <li><%= f.submit "Update", :class => "button" %></li>
+	</ul>
+    <% end %>
+   </div>
+</div>
+
+<%= render 'users/sidebar' %>

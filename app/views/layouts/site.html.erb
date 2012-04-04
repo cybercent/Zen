@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zen</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="site">
+	
+	<div id="header">
+		<div class="container">
+		<h1 id="logo"><%= link_to "Zen","/" %></h1>
+		<ul id="nav">
+		  <li><%= link_to t(:sign_up, :scope => "views.layout.site"), new_user_registration_path %></li>
+		  <li><%= link_to t(:sign_in, :scope => "views.layout.site"), new_user_session_path %></li>
+		</ul>
+		</div>
+	</div>
+	
+	<%= render 'layouts/flash' %>
+	
+	<div class="container">
+		<%= yield %>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<h1>
+  <%= @project.name %>
+  <span class="project-client"><%= @project.client %></span>
+  <span class="deal-value"><%= formatted_value(@project) %></span>
+</h1>
+<div id="projects" class="main-content">
+	<div class="header">
+	 <%= link_to 'Edit Deal', '#edit_project_modal', :class => "button", :"data-toggle" => "modal" %>
+	</div>
+	<div class="inner">
+		<ul class="history">
+			<% @completed_transitions.each do |transition| %>
+				<li>
+				  <div class="transition"><%= transition_tag transition.enter_state, transition.exit_state %></div>
+				  <p><%= transition.comment %></p>
+				  <div class="time"><%= time_ago_in_words transition.updated_at %></div>
+				</li>
+			<% end %>
+			<% if @completed_transitions.empty? %>
+			<li class="empty">This deal doesn't have any notes or history yet.</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div id="sidebar">
+	<div class="wrapper">
+		<div class="nav">
+		  <ul>
+			<li><%= link_to 'Edit Deal','#edit_project_modal', :"data-toggle" => "modal" %></li>
+			<li><%= link_to 'Add Note','#new_note_modal', :"data-toggle" => "modal" %></li>
+			<% if @project.lost? || @project.won? || @project.hold? %>
+			<li class="project" data-id="<%= @project.id %>">
+				<%= link_to 'Reactivate Deal','#', :"data-state" => "reactivate", :class => "reactivate" %>
+			</li>
+			<% end %>
+			<li><%= link_to 'Delete Deal', project_path, :method => "delete" %></li>
+			<li><%= link_to raw('&#9666; Back to Deals'),projects_path %></li>
+		  </ul>
+		</div>
+	</div>
+</div>
+<%= render :partial => "edit_modal" %>
+<%= render :partial => "note_modal" %>
