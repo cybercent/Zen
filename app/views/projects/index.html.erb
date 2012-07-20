@@ -1,27 +1,4 @@
 <h1>Projects</h1>
-<div id="projects" class="main-content">
-	<div class="header">
-		<%= link_to 'Add new deal', '#new_project_modal', :class => "button", :"data-toggle" => "modal" %>
-		<form id="project-search-form" action="#">
-			<input type="text" placeholder="Search Deals">
-		</form>
-	</div>
-	<div class="inner">
-		<ul class="projects ui-sortable">
-			<% @projects.each do |project| %>
-				<%= render :partial => 'project', :object => project %>
-			<% end %>
-			<% if @projects.empty? %>
-			<li class="empty">It looks like you don’t have any active deals. <a href="#new_project_modal" data-toggle="modal">Add a deal.</a></li>
-			<% end %>
-		</ul>
-	</div>
-	<div class="footer">
-		<div class="button-container">
-			<%= link_to 'View Completed Deals', completed_projects_path, :class => "button" %>
-		</div>
-	</div>
-</div>
 
 <div id="sidebar">
 	<div class="wrapper">
@@ -53,4 +30,30 @@
 		</div>
 	</div>
 </div>
+
+<div id="projects" class="main-content">
+	<div class="header">
+		<%= link_to 'Add new deal', '#new_project_modal', :class => "button", :"data-toggle" => "modal" %>
+		<form id="project-search-form" action="#">
+			<input type="text" placeholder="Search Deals">
+		</form>
+	</div>
+	<div class="inner">
+		<ul class="projects ui-sortable">
+			<% @projects.each do |project| %>
+				<%= render :partial => 'project', :object => project %>
+			<% end %>
+			<% if @projects.empty? %>
+			<li class="empty">It looks like you don’t have any active deals. <a href="#new_project_modal" data-toggle="modal">Add a deal.</a></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="footer">
+		<div class="button-container">
+			<%= link_to 'View Completed Deals', completed_projects_path, :class => "button" %>
+		</div>
+	</div>
+</div>
+
+
 <%= render :partial => "new_modal" %>
