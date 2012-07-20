@@ -5,6 +5,53 @@ fr:
   views:
     layout:
       site:
-        sign_up: "Pricing & Sign Up"
-        about: "About"
-        sign_in: "Sign In"
+        sign_up: "Prix & Inscription"
+        sign_in: "Connexion"
+      app:
+        projects: "Opportunités"
+        metrics: "Métriques"
+        account: "Compte"
+        log_out: "Deconnexion"
+        status_lead: "Prospection"
+        status_pitch: "Proposition"
+        status_negotiation: "Négociation"
+        status_closing: "Clôture"
+        status_won: "Gagné"
+        status_lost: "Perdu"
+        status_hold: "En attente"
+        cancel: "Annuler"
+    sign_up:
+      pricing_and_sign_up: "Prix & Inscription"
+      name: "Nom"
+      email: "Email"
+      password: "Mot de passe"
+      invite_code: "Code d'invitation"
+      sign_up: "Inscription"
+      pricing: "Prix"
+      numbered_deals: "{{total}} Opportunités au total"
+      unlimited_deals: "Opportunités illimites"
+      free: "Gratuit"
+      forever: "Pour toujours"
+      per_month: "Par mois"
+      no_contracts: "Pas de contrats, cartes de crédit ou des engagements. Juste les marchandises."
+    sign_in:
+      email: "Email"
+      password: "Mot de passe"
+      sign_in: "Connexion"
+      forgot_password: "Vous avez oublié votre mot de passe?"
+    projects:
+      index:
+        projects: "Opportunités"
+        new_project: "Nouvelle Opportunité"
+        put_on_hold: "Mettre en attente"
+        mark_as_lost: "Cloturé perdu"
+        edit: "Editer"
+        delete: "Supprimer"
+        add_note_text: "Ajouter une note de ce changement (facultatif)"
+        add_note: "Ajouter"
+        active_projects: "Opportunités actives"
+        active_projects_value: "Valeur des opportunités actives"
+        more_metrics: "Plus des métriques"
+        free_projects_left: "You've got {{projects_count}} free projects left. Besoin de plus?"
+      
+      
